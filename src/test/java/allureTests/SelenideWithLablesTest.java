@@ -14,27 +14,27 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.openqa.selenium.By.linkText;
 import static org.openqa.selenium.By.partialLinkText;
 
-public class SelenideTest {
+public class SelenideWithLablesTest {
 
     @BeforeAll
     public static void setUp() {
         Configuration.holdBrowserOpen = true;
     }
+
     @Test
-    @Feature("Visible tab Issue on repo")
-    @Story("Crwate Issue in repo")
+    @Feature("Display tab Issue in repository")
+    @Story("Create Issue in repository")
     @Owner("tmaksyutov")
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Create Issue")
+
     public void testIssueSearch() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         open("https://github.com");
-
         $(".header-search-input").click();
         $(".header-search-input").sendKeys("tmaksyutov/hw_work_with_files");
         $(".header-search-input").submit();
-
         $(linkText("tmaksyutov/hw_work_with_files")).click();
         $(partialLinkText("Issues")).shouldHave(text("Issues"));
     }

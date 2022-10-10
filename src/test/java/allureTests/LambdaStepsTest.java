@@ -19,21 +19,21 @@ public class LambdaStepsTest {
     public void testLambdaStep(){
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        step("Open Main page", () -> {
+        step("Открыть главную страницу", () -> {
             open("https://github.com");
         });
 
-        step("Find repository " + REPOSITORY, () -> {
+        step("Поиск репозитория " + REPOSITORY, () -> {
             $(".header-search-input").click();
             $(".header-search-input").sendKeys(REPOSITORY);
             $(".header-search-input").submit();
         });
 
-        step("Click on link repository " + REPOSITORY, () -> {
+        step("Кликнуть на репозиторий " + REPOSITORY, () -> {
             $(linkText(REPOSITORY)).click();
         });
 
-        step("Check for tab " + ISSUES, () ->{
+        step("Проверить таб " + ISSUES, () ->{
             $(partialLinkText(ISSUES)).shouldHave(text("Issues"));
         });
 
